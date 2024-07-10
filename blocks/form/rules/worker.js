@@ -32,11 +32,9 @@ export default async function initializeRuleEngineWorker(formDef, renderHTMLForm
 
   return new Promise((resolve) => {
     let form;
-    windowSearch = '';
     myWorker.addEventListener('message', async (e) => {
       if (e.data.name === 'init') {
         form = await renderHTMLForm(e.data.payload);
-        windowSearch=e.data.payload.windowSearch;
         // myWorker.terminate();
         resolve(form);
       }
