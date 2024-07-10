@@ -114,47 +114,9 @@ function defaultErrorHandler(response, headers, globals) {
   }
 }
 
-/**
- * For generateUniqueID
- * @retrun {string}
- */
-function generateUniqueID () {
-    var d = new Date();
-    var time = d.getTime();
-    return time;
-}
-
-/**
- * getURL_Parameter
- * @return {string}
- */
-function getURL_Parameter () {
-    var queryString = window.location.search;
-    var urlParams = new URLSearchParams(queryString);
-     if(urlParams.has('generatedID')){
-         var generatedID = urlParams.get('generatedID');
-         return generatedID;
-     }
-     return '';
- }
-
-/**
- * getEighteenYearsAgoDate
- * @retrun {Date}
- */
-function getEighteenYearsAgoDate () {   // ootb not implemented as date functions not available replaced by date picker and used max , min dates 
-    const today = new Date();
-    const pastDate = new Date(today.setFullYear(today.getFullYear() - 18));
-    return pastDate.toISOString().split('T')[0]; // format to YYYY-MM-DD
-} 
- 
-
 export {
   validateURL,
   navigateTo,
   toObject,
   defaultErrorHandler,
-  generateUniqueID,
-  getURL_Parameter,
-  getEighteenYearsAgoDate,
 };
