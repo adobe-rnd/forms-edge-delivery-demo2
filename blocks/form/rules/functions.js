@@ -114,7 +114,6 @@ function defaultErrorHandler(response, headers, globals) {
   }
 }
 
-
 /**
 * @function generateUniqueID
 * @retrun {string}
@@ -150,8 +149,6 @@ getEighteenYearsAgoDate =  function () {   // ootb not implemented as date funct
 } 
  
 
-
-
 export {
   validateURL,
   navigateTo,
@@ -159,5 +156,5 @@ export {
   defaultErrorHandler,
   generateUniqueID,
   getURL_Parameter,
-  getEighteenYearsAgoDate
+  getEighteenYearsAgoDate,
 };
