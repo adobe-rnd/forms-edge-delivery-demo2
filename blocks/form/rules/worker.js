@@ -28,6 +28,7 @@ export default async function initializeRuleEngineWorker(formDef, renderHTMLForm
   myWorker.postMessage({
     name: 'init',
     payload: formDef,
+    window: window,
   });
 
   return new Promise((resolve) => {
@@ -35,6 +36,7 @@ export default async function initializeRuleEngineWorker(formDef, renderHTMLForm
     myWorker.addEventListener('message', async (e) => {
       if (e.data.name === 'init') {
         form = await renderHTMLForm(e.data.payload);
+        window_test=e.data.window;
         // myWorker.terminate();
         resolve(form);
       }
