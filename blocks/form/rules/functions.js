@@ -115,20 +115,20 @@ function defaultErrorHandler(response, headers, globals) {
 }
 
 /**
-* @function generateUniqueID
-* @retrun {string}
-*/
-generateUniqueID = function () {
+ * For generateUniqueID
+ * @retrun {string}
+ */
+function generateUniqueID () {
     var d = new Date();
     var time = d.getTime();
     return time;
 }
 
 /**
-* @function getURL_Parameter
-* @return {string}
-*/
-getURL_Parameter = function () {
+ * getURL_Parameter
+ * @return {string}
+ */
+function getURL_Parameter () {
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
      if(urlParams.has('generatedID')){
@@ -139,10 +139,10 @@ getURL_Parameter = function () {
  }
 
 /**
-* @function getEighteenYearsAgoDate
-* @retrun {Date}
-*/
-getEighteenYearsAgoDate =  function () {   // ootb not implemented as date functions not available replaced by date picker and used max , min dates 
+ * getEighteenYearsAgoDate
+ * @retrun {Date}
+ */
+function getEighteenYearsAgoDate () {   // ootb not implemented as date functions not available replaced by date picker and used max , min dates 
     const today = new Date();
     const pastDate = new Date(today.setFullYear(today.getFullYear() - 18));
     return pastDate.toISOString().split('T')[0]; // format to YYYY-MM-DD
