@@ -13,7 +13,7 @@ import transferRepeatableDOM from './components/repeat.js';
 import { handleSubmit } from './submit.js';
 import { getSubmitBaseUrl, emailPattern } from './constant.js';
 
-export const DELAY_MS = 3000;
+export const DELAY_MS = 0;
 let captchaField;
 let afModule;
 
