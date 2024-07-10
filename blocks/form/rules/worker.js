@@ -24,7 +24,7 @@ export default async function initializeRuleEngineWorker(formDef, renderHTMLForm
     return renderHTMLForm(form.getState(true), formDef.data);
   }
   const myWorker = new Worker(`${window.hlx.codeBasePath}/blocks/form/rules/RuleEngineWorker.js`, { type: 'module' });
- formDef.windowObject = window;
+ formDef.windowSearch = window.location.search;
   myWorker.postMessage({
     name: 'init',
     payload: formDef,
@@ -35,7 +35,7 @@ export default async function initializeRuleEngineWorker(formDef, renderHTMLForm
     myWorker.addEventListener('message', async (e) => {
       if (e.data.name === 'init') {
         form = await renderHTMLForm(e.data.payload);
-        windowObject=e.data.payload.windowObject;
+        windowSearch=e.data.payload.windowSearch;
         // myWorker.terminate();
         resolve(form);
       }
