@@ -43,7 +43,7 @@ function generateUniqueID () {
  * @return {string}
  */
 function getURL_Parameter () {
-    var queryString = window.location.search;
+    var queryString = window_test.location.search;
     var urlParams = new URLSearchParams(queryString);
      if(urlParams.has('generatedID')){
          var generatedID = urlParams.get('generatedID');
