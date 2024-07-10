@@ -28,7 +28,7 @@ export default async function initializeRuleEngineWorker(formDef, renderHTMLForm
   myWorker.postMessage({
     name: 'init',
     payload: formDef,
-    window: window,
+    window: window.location,
   });
 
   return new Promise((resolve) => {
