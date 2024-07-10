@@ -21,6 +21,7 @@ export default async function initializeRuleEngineWorker(formDef, renderHTMLForm
   if (typeof Worker === 'undefined') {
     const ruleEngine = await import('./model/afb-runtime.js');
     const form = ruleEngine.createFormInstance(formDef);
+    const windowSearch ='';
     return renderHTMLForm(form.getState(true), formDef.data);
   }
   const myWorker = new Worker(`${window.hlx.codeBasePath}/blocks/form/rules/RuleEngineWorker.js`, { type: 'module' });
