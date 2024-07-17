@@ -87,11 +87,21 @@ export function decorateMain(main) {
   decorateBlocks(main);
 }
 
+function init () {
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+     if(urlParams.has('generatedID')){
+         var generatedID = urlParams.get('generatedID');
+         window.generatedID = generatedID;
+     }
+ }
+
 /**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
+  init();
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
