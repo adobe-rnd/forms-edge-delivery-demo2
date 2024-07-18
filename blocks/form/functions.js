@@ -42,14 +42,16 @@ function generateUniqueID () {
  * getURL_Parameter
  * @return {string}
  */
-function getURL_Parameter () {
+function getURL_Parameter () {  
+  if (window) {
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
      if(urlParams.has('generatedID')){
          var generatedID = urlParams.get('generatedID');
          return generatedID;
-     }
-     return '';
+    } 
+  }
+    return '';
  }
 
 /**
