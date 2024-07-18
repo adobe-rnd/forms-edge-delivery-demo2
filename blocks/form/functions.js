@@ -43,14 +43,15 @@ function generateUniqueID () {
  * @return {string}
  */
 function getURL_Parameter () {  
-  if (window) {
+  if (typeof window === "undefined") {
+    return ''; // Return empty string if window is undefined
+  }
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
      if(urlParams.has('generatedID')){
          var generatedID = urlParams.get('generatedID');
          return generatedID;
     } 
-  }
     return '';
  }
 
