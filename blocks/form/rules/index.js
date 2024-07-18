@@ -297,8 +297,49 @@ async function fetchData({ id }) {
   }
 }
 
+async function fetchDataFromOData(){
+  try {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let generatedID=''
+     if(urlParams.has('generatedID')){
+          generatedID = urlParams.get('generatedID');
+          const url = `https://services.odata.org/V4/(S(jbcut3nqd3321unp2sktnu23))/TripPinServiceRW/People('${generatedID}')`;
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
+          const json = await response.json();
+          if (json.FirstName && json.LastName) {
+          const outputJson = {
+            data: {
+              afData: {
+                afBoundData: {
+                  data: {
+                    firstName: inputJson.FirstName,
+                    lastName: inputJson.LastName
+                  },
+                },
+              },
+            },
+          };
+          return outputJson;
+        } else {
+          console.log('Output JSON is blank or null');
+          return null;
+        } 
+      }else {
+      return null;
+     }
+  } catch (ex) {
+    return null;
+  }
+
+}
+
 export async function initAdaptiveForm(formDef, createForm) {
-  const data = await fetchData(formDef);
+ // const data = await fetchData(formDef);
+ const data = fetchDataFromOData();
   await registerCustomFunctions();
   const form = await initializeRuleEngineWorker({
     ...formDef,
