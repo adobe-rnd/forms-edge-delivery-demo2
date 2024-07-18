@@ -323,7 +323,7 @@ async function fetchDataFromOData(){
               },
             },
           };
-          return outputJson;
+          return Object.keys(outputJson.data.afData.afBoundData.data).length > 0 ? outputJson.data.afData.afBoundData.data : (prefillData || json);
         } else {
           console.log('Output JSON is blank or null');
           return null;
