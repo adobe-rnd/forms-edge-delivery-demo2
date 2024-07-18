@@ -316,8 +316,8 @@ async function fetchDataFromOData(){
               afData: {
                 afBoundData: {
                   data: {
-                    firstname__c: json.FirstName,
-                    "$.WeFinanceCreditCard__cSObject.new_lastname__c": json.LastName,
+                    firstName: json.FirstName,
+                    lastName: json.LastName
                   },
                 },
               },
@@ -338,7 +338,7 @@ async function fetchDataFromOData(){
 }
 
 export async function initAdaptiveForm(formDef, createForm) {
- //const data = await fetchData(formDef);
+ // const data = await fetchData(formDef);
  const data = await fetchDataFromOData();
   await registerCustomFunctions();
   const form = await initializeRuleEngineWorker({
