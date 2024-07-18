@@ -24,7 +24,6 @@ export default async function initializeRuleEngineWorker(formDef, renderHTMLForm
     return renderHTMLForm(form.getState(true), formDef.data);
   }
   const myWorker = new Worker(`${window.hlx.codeBasePath}/blocks/form/rules/RuleEngineWorker.js`, { type: 'module' });
- formDef.windowSearch = window.location.search;
   myWorker.postMessage({
     name: 'init',
     payload: formDef,
