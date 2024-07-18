@@ -301,9 +301,9 @@ async function fetchDataFromOData(){
   try {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    let generatedID=''
+    
      if(urlParams.has('generatedID')){
-          generatedID = urlParams.get('generatedID');
+          const generatedID = urlParams.get('generatedID');
           const url = `https://services.odata.org/V4/(S(jbcut3nqd3321unp2sktnu23))/TripPinServiceRW/People('${generatedID}')`;
           const response = await fetch(url);
           if (!response.ok) {
@@ -316,8 +316,8 @@ async function fetchDataFromOData(){
               afData: {
                 afBoundData: {
                   data: {
-                    firstName: inputJson.FirstName,
-                    lastName: inputJson.LastName
+                    firstName: json.FirstName,
+                    lastName: json.LastName
                   },
                 },
               },
