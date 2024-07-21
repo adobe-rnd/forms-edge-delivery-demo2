@@ -316,9 +316,10 @@ async function fetchDataFromOData(){
               afData: {
                 afBoundData: {
                   data: {
-                    firstName: json.FirstName,
-                    lastName: json.LastName
-                  },
+                    "WeFinanceCreditCard__cSObject": {
+                      "firstname__c": "test"
+                    }
+                },
                 },
               },
             },
