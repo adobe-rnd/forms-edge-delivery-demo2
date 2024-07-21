@@ -310,14 +310,15 @@ async function fetchDataFromOData(){
             throw new Error('Network response was not ok ' + response.statusText);
           }
           const json = await response.json();
-          if (json.FirstName && json.LastName) {
+          if (json.FirstName) {
           const outputJson = {
             data: {
               afData: {
                 afBoundData: {
                   data: {
                     "WeFinanceCreditCard__cSObject": {
-                      "firstname__c": "test"
+                      "firstname__c": json.FirstName,
+                      "new_lastname__c": json.LastName || ''
                     }
                 },
                 },
